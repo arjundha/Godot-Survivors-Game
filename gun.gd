@@ -13,11 +13,13 @@ func _physics_process(delta: float) -> void:
 		look_at(target_enemy.global_position)
 		
 func shoot() -> void:
-	var new_bullet = BULLET.instantiate()
-	new_bullet.global_position = %ShootingPoint.global_position
-	new_bullet.global_rotation = %ShootingPoint.global_rotation
-	%ShootingPoint.add_child(new_bullet)
-
+	var bullet = BULLET.instantiate()
+	bullet.global_position = %ShootingPoint.global_position
+	bullet.global_rotation = %ShootingPoint.global_rotation
+	%ShootingPoint.add_child(bullet)
+	
+func change_speed(multiplier: float) -> void:
+	$Timer.wait_time *= multiplier
 
 func _on_timer_timeout() -> void:
 	shoot()
