@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://gun.gd" id="1_qy5ix"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bddw3"]
-radius = 298.965
+radius = 753.096
 
 [node name="Gun" type="Area2D"]
 collision_layer = 0
@@ -21,4 +21,11 @@ position = Vector2(92, -11)
 texture = ExtResource("1_50e78")
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Pistol"]
+unique_name_in_owner = true
 position = Vector2(27, -12)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
